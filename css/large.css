@@ -1,0 +1,22 @@
+@media only screen and (min-width: 1024px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .container .options {
+        width: 30%;
+        margin: 0 0 0 20px;
+    }
+
+    .options .general-use {display: block;}
+
+    section input[type="search"] {
+        width: 60%;}
+
+    .container .results {
+        width: 60%;
+        height: 150vh;
+        overflow-y: scroll;
+        margin: 0;
+    }
+}

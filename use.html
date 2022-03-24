@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search For Games | Tommy Sylver</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="css/small.css" />
+    <link rel="stylesheet" href="css/medium.css" />
+    <link rel="stylesheet" href="css/large.css" />
+    <!-- Get icons for the webpage -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+    />
+
+    <style>
+        main {padding: 50px;}
+        section h1 {color: #227c9d;}
+    </style>
+  </head>
+  <body>
+    <!-- <input type="search" placeholder="Search" name="searchInput">
+    <button id="submit">Search</button> -->
+
+    <header>
+      <div class="logo"><i class="fa-solid fa-gamepad"></i> SearchForGames</div>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+          </li>
+          <li>
+            <a href="use.html"><i class="fa-solid fa-file-lines"></i> Usage</a
+            >
+          </li>
+          <li>
+            <a href="https://www.igdb.com/api" target="_blank"
+              ><i class="fa-solid fa-gear"></i> API</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+        <div class="general-use">
+            <!-- General Use -->
+            <section>
+              <h1><i class="fa-solid fa-file-lines"></i> How to use the App</h1>
+              <ul>
+                <li>
+                  Use the search bar above and type a keyword like "Fifa", ...
+                  to find matchings results
+                </li>
+                <li>
+                  Each game results will provide the following information:
+                  Image, title, genres, platforms, release date, rating. If any
+                  of those info is missing, it will represented as N/A
+                </li>
+                <li>
+                  The results container has a limited height and has a property
+                  "overflow-y:scroll"
+                </li>
+              </ul>
+            </section>
+
+            <!-- Images and titles -->
+            <section>
+              <h1><i class="fa-regular fa-id-badge"></i> Images and titles</h1>
+              <ul>
+                <li>
+                  While hovering the mouse on them, there is a special effect
+                  demonstrating the use of transform, transition, animations,
+                  <div class="li"></div>
+                </li>
+                <li>
+                  When clicked, they will open a page redirecting to the API
+                  provided website with the full details of the selected game.
+                </li>
+              </ul>
+            </section>
+
+            <!-- Rating -->
+            <section>
+              <h1><i class="fa-solid fa-star"></i> Ratings</h1>
+              <ul>
+                <li>Ratings are represented in four colors</li>
+                <li>higher than 70: Green color</li>
+                <li>Between 50 to 70: Orange color</li>
+                <li>Less than 50: Red color</li>
+                <li>Unknown (N/A): Blue color</li>
+              </ul>
+            </section>
+
+            <!-- Genres, platforms, release date -->
+            <section>
+              <h1>
+                <i class="fa-solid fa-circle-info"></i> Genres, Platforms, and
+                release date
+              </h1>
+              <ul>
+                <li>
+                  There are basic text that provide additional information about
+                  the game
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
+    </main>
+
+    <footer>&copy;Copyright | Tommy Sylver</footer>
+    <script src="script.js"></script>
+  </body>
+</html>
