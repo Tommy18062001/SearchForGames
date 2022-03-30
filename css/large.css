@@ -3,20 +3,28 @@
         flex-direction: row;
     }
 
-    .container .options {
+    .container .left-side {
         width: 30%;
         margin: 0 0 0 20px;
     }
 
-    .options .general-use {display: block;}
+    .left-side .general-use {display: block;}
 
     section input[type="search"] {
         width: 60%;}
 
-    .container .results {
+    .container .right-side {
         width: 60%;
-        height: 150vh;
-        overflow-y: scroll;
+        height: fit-content;
         margin: 0 0 0 30px;
+    }
+
+    .container .right-side .results {
+        height: 145vh;
+        overflow-y: scroll;
+    }
+
+    .datasort {
+        margin-top: 0;
     }
 }

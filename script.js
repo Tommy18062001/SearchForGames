@@ -1,6 +1,9 @@
 const searchBtn = document.getElementById("search");
 const url = "https://api.igdb.com/v4/"
-const fields = "fields=name, genres.name, category, cover.image_id, release_dates.human, platforms.name, rating, url";
+const fields = "fields=name, genres.name, category, cover.image_id, release_dates.human, release_dates.y, platforms.name, rating, url";
+
+// use for sorting
+let count = 0;
 
 function mainRequest(value, field) {
   var myHeaders = new Headers();
@@ -18,9 +21,9 @@ function mainRequest(value, field) {
   .then(response => response.json())
   .then(result =>{
     // this is our data
-    console.log(result);
+    // console.log(result);
     result.forEach(element => {
-      console.log(element);
+      // console.log(element);
       displayGame(element);
     });
   })
@@ -59,6 +62,7 @@ function displayGame(gameData) {
   }
   
   title.textContent = gameData.name;
+  container.setAttribute("data-name", gameData.name);
   
   // game genres
   if (gameData.genres) {
@@ -83,6 +87,7 @@ function displayGame(gameData) {
   // release date 
   if (gameData.release_dates) {
     release.textContent = "Release date: " + gameData.release_dates[0].human;
+    container.setAttribute("data-date", gameData.release_dates[0].y);
   }
   else {release.textContent = "Release date: N/A"};
 
@@ -99,12 +104,14 @@ function displayGame(gameData) {
     }
 
     rating.textContent = "Rating: " + parseInt(gameData.rating);
+    container.setAttribute("data-rating", gameData.rating);
   }
 
   else {
     rating.classList.add("unknown-rating");
     rating.textContent = "Rating: N/A";
   }
+
   
   ourSection.appendChild(title);
   ourSection.appendChild(genre);
@@ -116,7 +123,9 @@ function displayGame(gameData) {
 
   container.appendChild(linkImg);
   container.appendChild(ourSection);
-  
+
+  // add data information
+  container.setAttribute("data-default", count++)
   document.querySelector(".results").appendChild(container);
 }
 
@@ -133,11 +142,53 @@ if (localStorage.getItem("search") != "") {
 
 searchBtn.addEventListener("click", () => {
   // clear the results 
+  count = 0;
   clearResults(document.querySelector(".results"));
-
   const searchInput = document.querySelector("input[type='search'");
-
   localStorage.setItem("search", searchInput.value);
-  
   mainRequest(searchInput.value, fields)
 })
+
+// handle the enter keybord event
+window.addEventListener('keydown', function(e) {
+  if (e.key == "Enter") {
+    // clear the results 
+    clearResults(document.querySelector(".results"));
+    const searchInput = document.querySelector("input[type='search'");
+    localStorage.setItem("search", searchInput.value);
+    mainRequest(searchInput.value, fields)
+  }
+})
+
+// handle datasort button 
+const datasortBtn = document.querySelectorAll(".datasort button");
+datasortBtn.forEach(btn => {
+  btn.addEventListener("click", () => {
+    datasortBtn.forEach(function(item) {
+      item.classList.remove("active");
+    });
+
+    btn.classList.add("active");
+    
+    if (btn.dataset.sort === "date") {
+      Array.from(document.querySelectorAll(".game[data-date]"))
+    .sort(({dataset: {date: a}}, {dataset: {date: b}}) => b.localeCompare(a)) 
+    .forEach((item) => item.parentNode.appendChild(item));
+    }
+    else if (btn.dataset.sort === "rating") {
+      Array.from(document.querySelectorAll(".game[data-rating]"))
+    .sort(({dataset: {rating: a}}, {dataset: {rating: b}}) => b.localeCompare(a)) 
+    .forEach((item) => item.parentNode.appendChild(item));
+    }
+    else if (btn.dataset.sort === "name") {
+      Array.from(document.querySelectorAll(".game[data-name]"))
+    .sort(({dataset: {name: a}}, {dataset: {name: b}}) => a.localeCompare(b)) 
+    .forEach((item) => item.parentNode.appendChild(item));
+    }
+    else {
+      Array.from(document.querySelectorAll(".game[data-default]"))
+      .sort(({dataset: {default: a}}, {dataset: {default: b}}) => a.localeCompare(b)) 
+      .forEach((item) => item.parentNode.appendChild(item));
+    }
+  })
+});

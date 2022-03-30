@@ -63,7 +63,7 @@ main .welcome-message {
     position: relative;
 }
 
-.container .options {
+.container .left-side {
     width: 90%;
     height: fit-content;
     border-radius: 5px;
@@ -71,25 +71,30 @@ main .welcome-message {
     margin: 0 auto;
 }
 
-.container .results {
+.container .right-side {
     width: 90%;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    position: relative;
     margin: 20px auto;
 }
+.container .results {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
 
-.options {
+
+.left-side {
     font-family: sans-serif;
 }
 
-.options section {
+.left-side section {
     width: 90%;
     text-align: left;
     color: white;
     margin: 20px auto;
 }
 
-.options .general-use {display: none;}
+.left-side .general-use {display: none;}
 
 section .search {
     padding-left: 10px;
@@ -109,7 +114,7 @@ section input[type="search"]:focus {
     background-color: #eee;
 }
 
-section button {
+section button{
     height: 40px;
     padding: 5px 20px;
     border-radius: 5px;
@@ -239,25 +244,24 @@ footer {
     font-family: inherit;
   }
 
-/* 
-  
-.view-option {
+
+.datasort {
     display: block;
+    margin: 10px 10px 10px 0;
 }
-  .view-option ul {
-    display: flex;
-}
-  .view-option ul li.active {
-    color: white;
-    background-color: #084863;
-}
-  .view-option ul li {
-    width: 100px;
-    padding: 10px;
-    box-shadow: 1px 2px 3px 2px rgb(0 0 0 / 28%);
-    margin-right: 15px;
-    border-radius: 5px;
-    list-style: none;
+.datasort button {
+    color: #227c9d;
+    background-color: white;
+    padding: 5px 20px;
+    border: 1px solid #227c9d;
+    border-radius: 25px;
     cursor: pointer;
-    text-align: center;
-} */
+    transition: 0.3s ease;
+}
+
+.datasort button.active, .datasort button:hover {
+    background-color: #227c9d;
+    color: white;
+}
+
+
