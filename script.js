@@ -192,3 +192,9 @@ datasortBtn.forEach(btn => {
     }
   })
 });
+
+
+// Handling navbar hide/show
+function toggleMenu() {
+  document.querySelector("header nav ul").classList.toggle("hide");
+}

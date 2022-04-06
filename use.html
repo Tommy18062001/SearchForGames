@@ -27,7 +27,8 @@
     <header>
       <div class="logo"><i class="fa-solid fa-gamepad"></i> SearchForGames</div>
       <nav>
-        <ul>
+        <button onclick="toggleMenu()" class="hamburger">&#9776;</button>
+        <ul class="hide">
           <li>
             <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
           </li>
@@ -77,7 +78,7 @@
                 </li>
                 <li>
                   When clicked, they will open a page redirecting to the API
-                  provided website with the full details of the selected game.
+                  provider website with the full details of the selected game.
                 </li>
               </ul>
             </section>
@@ -102,8 +103,32 @@
               </h1>
               <ul>
                 <li>
-                  There are basic text that provide additional information about
+                  They are basic texts that provide additional information about
                   the game
+                </li>
+              </ul>
+            </section>
+
+            <!-- The data sort option -->
+            <section>
+              <h1>
+                <i class="fa-solid fa-circle-info"></i> Sorting
+              </h1>
+              <ul>
+                <li>
+                  There are 4 options available
+                </li>
+                <li>
+                  Defaut: Sort the results by default. 
+                </li>
+                <li>
+                  Date: Sort the results by year (Descending) 
+                </li>
+                <li>
+                  Rating: Sort the results by rating (from High to low)
+                </li>
+                <li>
+                  Name: Sort the results by name. (from A to Z)
                 </li>
               </ul>
             </section>

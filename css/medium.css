@@ -1,4 +1,23 @@
 @media only screen and (min-width: 760px) {
     
+    .hamburger {
+        display: none;
+      }
+
+    header nav ul, header nav ul.hide {
+        position: relative;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        height: fit-content;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    header nav ul li {
+        margin: 0px 50px 0px 0px;
+        list-style:none;
+    }
+    
 
 }
