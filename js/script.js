@@ -5,18 +5,17 @@ const fields = "fields=name, genres.name, category, cover.image_id, release_date
 // use for sorting
 let count = 0;
 
+/* --------------------------------- API request ----------------------------------*/
 function mainRequest(value, field) {
   var myHeaders = new Headers();
   myHeaders.append("Client-ID", "0ftp8xskn83kccb5b1b6dws323stq1");
   myHeaders.append("Authorization", "Bearer m8zrqpddyoc2gcn9hcyimbe5p4iqr1");
-  myHeaders.append("Access-Control-Allow-Origin", "https://tommy18062001.github.io/SearchForGames/");
 
   var requestOptions = {
     method: 'POST',
     headers: myHeaders,
     redirect: 'follow',
   };
-
 
   fetch(`https://cors-anywhere.herokuapp.com/${url}games?search=${value}&${field};limit=30;`, requestOptions)
   .then(response => response.json())
@@ -32,6 +31,7 @@ function mainRequest(value, field) {
   .catch(error => console.log('error', error));
 }
 
+/* --------------------------------- handle the display of each game results ----------------------------------*/
 function displayGame(gameData) {
   const container = document.createElement("div");
   const img = document.createElement("img");
@@ -60,7 +60,7 @@ function displayGame(gameData) {
   else {
     img.setAttribute("src", `https://images.igdb.com/igdb/image/upload/t_cover_big/undefined.png`)
     img.setAttribute("alt", "cover")
-  }
+  } 
   
   title.textContent = gameData.name;
   container.setAttribute("data-name", gameData.name);
@@ -136,11 +136,12 @@ function clearResults(result) {
     }
 };
 
-// this will check if the user already serched something before
+/* --------------------------------- Initiate local storage ----------------------------------*/
 if (localStorage.getItem("search") != "") {
   mainRequest(localStorage.getItem("search"), fields)
 } 
 
+/* ---------------------------------handle Enter Key/Search Event ----------------------------------*/
 searchBtn.addEventListener("click", () => {
   // clear the results 
   count = 0;
@@ -150,7 +151,6 @@ searchBtn.addEventListener("click", () => {
   mainRequest(searchInput.value, fields)
 })
 
-// handle the enter keybord event
 window.addEventListener('keydown', function(e) {
   if (e.key == "Enter") {
     // clear the results 
@@ -161,7 +161,7 @@ window.addEventListener('keydown', function(e) {
   }
 })
 
-// handle datasort button 
+/* ---------------------------------------handle datasort button -------------------------------------*/
 const datasortBtn = document.querySelectorAll(".datasort button");
 datasortBtn.forEach(btn => {
   btn.addEventListener("click", () => {
@@ -195,7 +195,7 @@ datasortBtn.forEach(btn => {
 });
 
 
-// Handling navbar hide/show
+/*------------------------------------- Handling navbar hide/show -------------------------------------*/
 function toggleMenu() {
   document.querySelector("header nav ul").classList.toggle("hide");
 }
