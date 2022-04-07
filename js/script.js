@@ -22,6 +22,13 @@ function mainRequest(value, field) {
   .then(result =>{
     // this is our data
     // console.log(result);
+    if (result.length == 0) {
+      const notFoundMessage = document.createElement("p");
+      notFoundMessage.classList.add("notFoundMessage")
+      notFoundMessage.textContent = "No results found !"
+      document.querySelector(".results").appendChild(notFoundMessage);
+    }
+
     result.forEach(element => {
       // console.log(element);
       displayGame(element);
