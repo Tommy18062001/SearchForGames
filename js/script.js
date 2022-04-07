@@ -9,6 +9,7 @@ function mainRequest(value, field) {
   var myHeaders = new Headers();
   myHeaders.append("Client-ID", "0ftp8xskn83kccb5b1b6dws323stq1");
   myHeaders.append("Authorization", "Bearer m8zrqpddyoc2gcn9hcyimbe5p4iqr1");
+  myHeaders.append("Access-Control-Allow-Origin", "https://tommy18062001.github.io/SearchForGames/");
 
   var requestOptions = {
     method: 'POST',
