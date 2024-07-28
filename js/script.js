@@ -11,6 +11,8 @@ function mainRequest(value, field) {
   var myHeaders = new Headers();
   myHeaders.append("Client-ID", "0ftp8xskn83kccb5b1b6dws323stq1");
   myHeaders.append("Authorization", "Bearer ezkrqlanhux44xh1nkqs95ra7g7eih");
+  myHeaders.append("Origin", "https://tommy18062001.github.io/SearchForGames/"); // Add this line with your domain
+  myHeaders.append("x-requested-with", "XMLHttpRequest"); // Add this line
 
   // yt4lrhtuanzt51c20ffi5d75a1j76k lwtf4prxyx873w1idcw5pp5ujjchwn
 
